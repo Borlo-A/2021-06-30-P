@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.genes.model.Model;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,7 +28,7 @@ public class FXMLController {
     private Button btnRicerca;
 
     @FXML
-    private ComboBox<?> boxLocalizzazione;
+    private ComboBox<String> boxLocalizzazione;
 
     @FXML
     private TextArea txtResult;
@@ -53,5 +54,7 @@ public class FXMLController {
 
 	public void setModel(Model model) {
 		this.model = model;
+		txtResult.setText("Grafo creato correttamente. \n\nVertici: " + this.model.numeroVertici() +"\nArchi: " + this.model.numeroArchi() + "\n\nSelezionare una localizzazione.");
+		boxLocalizzazione.setItems(FXCollections.observableArrayList(this.model.getLocalizations()));
 	}
 }
